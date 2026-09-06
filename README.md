@@ -6,7 +6,7 @@ Personal site of Gary Waite — digital marketer, biotech & ecommerce copywriter
 
 ## Live
 
-GitHub Pages → https://waitesolutions.github.io/garywaite/
+[GitHub Pages → https://waitesolutions.github.io/garywaite/](https://garywaite.net/)
 
 ## Stack
 
@@ -18,4 +18,4 @@ Open `index.html` in a browser. That's it.
 
 ## Contact
 
-gary@garywaite.net · [LinkedIn](https://www.linkedin.com/in/garycwaite/) · [about.me](https://about.me/waitesolutions)
+[LinkedIn](https://www.linkedin.com/in/garycwaite/) · [about.me](https://about.me/waitesolutions)
