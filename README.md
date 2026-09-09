@@ -6,7 +6,7 @@ Personal site of Gary Waite — digital marketer, biotech & ecommerce copywriter
 
 ## Live
 
-[GitHub Pages → https://waitesolutions.github.io/garywaite/](https://garywaite.net/)
+Vercel → https://garywaite.net
 
 ## Stack
 
