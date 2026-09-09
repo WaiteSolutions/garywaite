@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gary Waite — Built Different, Ships Anyway</title>
+<meta name="description" content="Gary Waite. Empath digital marketer, biotech &amp; ecommerce copywriter, web developer, talent manager, USA Wrestling coach. North Texas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#f4efe9;
+  --ink-dim:#a89f94;
+  --bg:#141210;
+  --bg-raise:#1d1a17;
+  --line:#2e2a25;
+  --copper:#c96f3b;
+  --copper-soft:#e0925e;
+  --mat-gold:#cfae5e;
+  --sans:"Space Grotesk",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",monospace;
+  --serif:"Newsreader",Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--copper);color:var(--bg)}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(20,18,16,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1120px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:17px;text-decoration:none}
+.logo span{color:var(--copper)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:13px;text-decoration:none;color:var(--ink-dim);font-family:var(--mono);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{border:1px solid var(--copper);color:var(--copper-soft)!important;padding:7px 16px;border-radius:4px}
+.nav-cta:hover{background:var(--copper);color:var(--bg)!important}
+@media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ---------- hero ---------- */
+header{padding:190px 0 110px;position:relative;overflow:hidden}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.35;mask-image:radial-gradient(ellipse 90% 70% at 30% 20%,black,transparent)}
+.kicker{font-family:var(--mono);font-size:13px;color:var(--copper-soft);letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px;position:relative}
+h1{font-size:clamp(52px,8.5vw,104px);line-height:.98;letter-spacing:-.035em;font-weight:700;max-width:12ch;position:relative}
+h1 em{font-style:normal;color:var(--copper)}
+.hero-sub{margin-top:36px;max-width:56ch;font-size:19px;color:var(--ink-dim);position:relative}
+.hero-sub strong{color:var(--ink);font-weight:500}
+.hero-meta{margin-top:44px;display:flex;flex-wrap:wrap;gap:12px;position:relative}
+.chip{font-family:var(--mono);font-size:12.5px;color:var(--ink-dim);border:1px solid var(--line);background:var(--bg-raise);padding:7px 14px;border-radius:100px}
+.chip b{color:var(--copper-soft);font-weight:500}
+.hero-actions{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap;position:relative}
+.btn{display:inline-block;padding:14px 28px;border-radius:4px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--copper);color:var(--bg)}
+.btn-solid:hover{background:var(--copper-soft)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--copper)}
+
+/* ---------- section scaffolding ---------- */
+section{padding:110px 0;border-top:1px solid var(--line)}
+.sec-label{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper-soft);margin-bottom:18px}
+h2{font-size:clamp(32px,4.5vw,52px);letter-spacing:-.025em;font-weight:700;line-height:1.08;max-width:22ch}
+.lede{margin-top:22px;max-width:62ch;color:var(--ink-dim);font-size:17.5px}
+
+/* ---------- pillars (asymmetric bento, not 3 equal cards) ---------- */
+.pillars{margin-top:64px;display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.p-card{background:var(--bg-raise);border:1px solid var(--line);border-radius:8px;padding:30px;transition:border-color .25s,transform .25s}
+.p-card:hover{border-color:var(--copper);transform:translateY(-3px)}
+.p-card .n{font-family:var(--mono);font-size:12px;color:var(--copper-soft)}
+.p-card h3{font-size:21px;letter-spacing:-.01em;margin:12px 0 10px}
+.p-card p{font-size:14.5px;color:var(--ink-dim)}
+.p-big{grid-column:span 3}
+.p-wide{grid-column:span 4}
+.p-narrow{grid-column:span 2}
+@media(max-width:900px){.pillars{grid-template-columns:1fr}.p-big,.p-wide,.p-narrow{grid-column:span 1}}
+
+/* ---------- about / method ---------- */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:start}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:40px}}
+.about-body p{margin-bottom:20px;color:var(--ink-dim);font-size:17px}
+.about-body p strong{color:var(--ink);font-weight:500}
+.pull{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.4;color:var(--ink);border-left:2px solid var(--copper);padding-left:28px;margin:36px 0}
+.spec{background:var(--bg-raise);border:1px solid var(--line);border-radius:8px;padding:8px 0;font-family:var(--mono);font-size:13.5px}
+.spec-row{display:flex;justify-content:space-between;gap:20px;padding:14px 26px;border-bottom:1px solid var(--line)}
+.spec-row:last-child{border-bottom:none}
+.spec-row .k{color:var(--ink-dim)}
+.spec-row .v{color:var(--ink);text-align:right}
+.spec-row .v a{color:var(--copper-soft);text-decoration:none;border-bottom:1px dotted var(--copper-soft)}
+
+/* ---------- work ---------- */
+.work-list{margin-top:56px;border-top:1px solid var(--line)}
+.work-item{display:grid;grid-template-columns:120px 1fr auto;gap:28px;align-items:baseline;padding:30px 8px;border-bottom:1px solid var(--line);transition:background .2s}
+.work-item:hover{background:var(--bg-raise)}
+.work-item .tag{font-family:var(--mono);font-size:12px;color:var(--copper-soft);text-transform:uppercase;letter-spacing:.08em}
+.work-item h3{font-size:20px;letter-spacing:-.01em}
+.work-item p{font-size:14.5px;color:var(--ink-dim);margin-top:6px;max-width:64ch}
+.work-item .arrow{color:var(--ink-dim);font-size:20px}
+@media(max-width:760px){.work-item{grid-template-columns:1fr;gap:8px}.work-item .arrow{display:none}}
+.note{margin-top:24px;font-family:var(--mono);font-size:12.5px;color:var(--ink-dim)}
+.note b{color:var(--mat-gold);font-weight:500}
+
+/* ---------- library ---------- */
+.library{background:var(--bg-raise)}
+.lib-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+@media(max-width:900px){.lib-grid{grid-template-columns:1fr;gap:36px}}
+.shelf{display:flex;align-items:flex-end;gap:7px;height:210px}
+.book{flex:1;border-radius:2px 2px 0 0;min-width:14px}
+.lib-body p{color:var(--ink-dim);font-size:17px;margin-bottom:18px}
+.lib-body p strong{color:var(--ink);font-weight:500}
+
+/* ---------- mat ---------- */
+.mat-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+@media(max-width:900px){.mat-grid{grid-template-columns:1fr;gap:36px}}
+.mat-body p{color:var(--ink-dim);font-size:17px;margin-bottom:18px}
+.mat-body p strong{color:var(--ink);font-weight:500}
+.mat-lines{font-family:var(--mono);font-size:14px;color:var(--ink-dim);border:1px solid var(--line);border-radius:8px;padding:28px;background:var(--bg-raise)}
+.mat-lines div{padding:9px 0;border-bottom:1px dashed var(--line)}
+.mat-lines div:last-child{border-bottom:none}
+.mat-lines b{color:var(--mat-gold);font-weight:500}
+
+/* ---------- personal ---------- */
+.personal .quote{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);line-height:1.35;letter-spacing:-.01em;max-width:30ch;margin-top:8px}
+.personal .quote span{color:var(--copper)}
+.p-cols{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+@media(max-width:760px){.p-cols{grid-template-columns:1fr}}
+.p-col h4{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--copper-soft);margin-bottom:14px}
+.p-col p{font-size:15.5px;color:var(--ink-dim)}
+
+/* ---------- contact / footer ---------- */
+.contact{text-align:left}
+.contact h2{max-width:18ch}
+.contact-actions{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:36px 0;font-family:var(--mono);font-size:12.5px;color:var(--ink-dim)}
+.foot-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--ink-dim);text-decoration:none}
+footer a:hover{color:var(--copper-soft)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="#top">gary waite<span>.</span></a>
+    <div class="nav-links">
+      <a href="#method">method</a>
+      <a href="#work">work</a>
+      <a href="#library">library</a>
+      <a href="#mat">the mat</a>
+      <a href="#contact" class="nav-cta">say hello</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div class="kicker rv">North Texas · Marketing · Code · The Mat</div>
+    <h1 class="rv">Built <em>different</em>, ships&nbsp;anyway.</h1>
+    <p class="hero-sub rv">I'm Gary Waite — an <strong>empath in marketing</strong>, a <strong>copywriter for biotech and ecommerce</strong>, a developer, a talent manager, a library collector, and a <strong>USA Wrestling coach</strong>. Autistic, direct, and allergic to fluff. I help people and brands navigate problems they didn't see coming.</p>
+    <div class="hero-meta rv">
+      <span class="chip">📍 <b>Dallas–Fort Worth</b></span>
+      <span class="chip">viral campaigns: <b>shipped</b></span>
+      <span class="chip">Texas Tech <b>alum</b></span>
+      <span class="chip">dad mode: <b>always on</b></span>
+    </div>
+    <div class="hero-actions rv">
+      <a class="btn btn-solid" href="#work">See the work</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/garycwaite/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+  </div>
+</header>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-label rv">01 — How I operate</div>
+    <h2 class="rv">The same wiring that makes me autistic makes me good at this.</h2>
+    <p class="lede rv">Pattern recognition. Deep focus. Radical clarity. Empathy that runs on analysis, not small talk. Every discipline below is the same skill pointed at a different target.</p>
+    <div class="pillars">
+      <div class="p-card p-big rv"><div class="n">01</div><h3>Empath Digital Marketing</h3><p>I read the room by reading the data — and then I write to the human behind it. Campaigns that convert because they actually understand people, including the ones built for touchscreens and TikTok attention spans.</p></div>
+      <div class="p-card p-big rv"><div class="n">02</div><h3>Copywriting: Biotech &amp; Ecommerce</h3><p>Two registers, one discipline: making the complex legible and the ordinary irresistible. Mechanism-of-action clarity on one desk; add-to-cart urgency on the other. Viral campaign success in the track record.</p></div>
+      <div class="p-card p-wide rv"><div class="n">03</div><h3>Web Development</h3><p>I build what I write. Next.js, modern stacks, sites that load fast and rank — because a great message in a slow container is still a missed conversion.</p></div>
+      <div class="p-card p-narrow rv"><div class="n">04</div><h3>Talent Management</h3><p>Advocating for people the industry underestimates. Clear specs, honest feedback, no politics.</p></div>
+      <div class="p-card p-narrow rv"><div class="n">05</div><h3>Library Collector</h3><p>Thousands of volumes, catalogued. A physical index of curiosity — see below.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / SPEC SHEET -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-body rv">
+      <div class="sec-label">02 — About</div>
+      <h2>Navigator of problems you didn't see coming.</h2>
+      <p style="margin-top:28px">Most résumés pick a lane. Mine keeps crossing them — and that's the point. <strong>Biotech copy needs the same systems thinking as code.</strong> A viral campaign needs the same timing as a wrestling shot. Managing talent needs the same empathy I bring to everything, neurodivergent or not.</p>
+      <p>I've spent a career figuring out complex situations and achieving results — for brands, for clients, for athletes, and for a family I'm proud of. <strong>Divorced, co-parenting, still shipping.</strong> The chapters I didn't plan turned out to be the ones that taught me how to write.</p>
+      <div class="pull">"I help people navigate problems they didn't see coming. I'm good at figuring out complex situations and achieving results."</div>
+      <p>That line has been my bio for years. It survived a career change, a coast of industries, and a decade of Dallas traffic. It'll survive your project too.</p>
+    </div>
+    <div class="spec rv">
+      <div class="spec-row"><span class="k">name</span><span class="v">Gary Waite</span></div>
+      <div class="spec-row"><span class="k">based</span><span class="v">Dallas, Texas (DFW)</span></div>
+      <div class="spec-row"><span class="k">education</span><span class="v">Texas Tech University</span></div>
+      <div class="spec-row"><span class="k">languages</span><span class="v">English, JavaScript, Teenager</span></div>
+      <div class="spec-row"><span class="k">focus</span><span class="v">biotech · ecommerce · digital</span></div>
+      <div class="spec-row"><span class="k">superpower</span><span class="v">empathy + pattern recognition</span></div>
+      <div class="spec-row"><span class="k">coach_level</span><span class="v">USA Wrestling (certified)</span></div>
+      <div class="spec-row"><span class="k">library</span><span class="v">growing, uncatalogued chaos → order</span></div>
+      <div class="spec-row"><span class="k">status</span><span class="v">open to interesting problems</span></div>
+      <div class="spec-row"><span class="k">links</span><span class="v"><a href="https://www.linkedin.com/in/garycwaite/" target="_blank" rel="noopener">linkedin</a> · <a href="https://about.me/waitesolutions" target="_blank" rel="noopener">about.me</a></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-label rv">03 — Selected work</div>
+    <h2 class="rv">Receipts.</h2>
+    <p class="lede rv">Campaigns, copy, code, and placements. Each entry below is a placeholder slot — drop in the real project names, links, and numbers and this section becomes the strongest thing on the page.</p>
+    <div class="work-list">
+      <div class="work-item rv"><span class="tag">Viral</span><div><h3>[Campaign name — the one that broke the algorithm]</h3><p>One line on the hook, the audience, and the result. If you have the share/view/conversion number, lead with it.</p></div><span class="arrow">→</span></div>
+      <div class="work-item rv"><span class="tag">Biotech</span><div><h3>[Biotech client — mechanism to message]</h3><p>How you translated dense science into copy a buyer or clinician actually read. Compliance-aware, jargon-free.</p></div><span class="arrow">→</span></div>
+      <div class="work-item rv"><span class="tag">Ecommerce</span><div><h3>[Ecommerce brand — PDP/CLV/email flow]</h3><p>The surface you wrote (PDPs, lifecycle email, paid social), and what moved after it shipped.</p></div><span class="arrow">→</span></div>
+      <div class="work-item rv"><span class="tag">Dev</span><div><h3>[Site or product you built]</h3><p>Stack, problem, outcome. Link the live site — you ship real things, show them.</p></div><span class="arrow">→</span></div>
+      <div class="work-item rv"><span class="tag">Talent</span><div><h3>[Placement or talent win]</h3><p>Who you advocated for and where they landed.</p></div><span class="arrow">→</span></div>
+    </div>
+    <p class="note rv"><b>//</b> no fake metrics on this page — when you send the real numbers, they go in verbatim.</p>
+  </div>
+</section>
+
+<!-- LIBRARY -->
+<section id="library" class="library">
+  <div class="wrap lib-grid">
+    <div class="shelf rv" aria-hidden="true">
+      <div class="book" style="height:78%;background:#8c4a2f"></div>
+      <div class="book" style="height:92%;background:#3f5c4a"></div>
+      <div class="book" style="height:70%;background:#c96f3b"></div>
+      <div class="book" style="height:88%;background:#2f4257"></div>
+      <div class="book" style="height:64%;background:#cfae5e"></div>
+      <div class="book" style="height:95%;background:#5c3a4a"></div>
+      <div class="book" style="height:74%;background:#4a5c3a"></div>
+      <div class="book" style="height:86%;background:#8c6a2f"></div>
+      <div class="book" style="height:68%;background:#3a4a5c"></div>
+      <div class="book" style="height:90%;background:#c96f3b"></div>
+      <div class="book" style="height:76%;background:#5c4a3a"></div>
+      <div class="book" style="height:84%;background:#3f5c4a"></div>
+      <div class="book" style="height:66%;background:#8c4a2f"></div>
+      <div class="book" style="height:93%;background:#2f4257"></div>
+    </div>
+    <div class="lib-body rv">
+      <div class="sec-label">04 — The library</div>
+      <h2>A collector's brain, shelved.</h2>
+      <p style="margin-top:24px">The collection is the tell. <strong>Every book is a pattern I wanted to own</strong> — biotech adjacent, marketing canon, wrestling history, and the weird spines nobody else keeps. Copywriting is just librarianship with a deadline: know where everything is, pull the right volume, quote it precisely.</p>
+      <p>If we work together, expect references. Expect the footnote. Expect someone who <strong>actually read the thing</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAT -->
+<section id="mat">
+  <div class="wrap mat-grid">
+    <div class="mat-body rv">
+      <div class="sec-label">05 — The mat</div>
+      <h2>USA Wrestling coach.</h2>
+      <p style="margin-top:24px">Friday nights and weekend tournaments, I'm on the mat coaching kids through the sport that teaches everything my career did: <strong>position before panic, pressure with purpose, and getting up one more time than you were put down.</strong></p>
+      <p>Coaching is also the purest form of what I do for clients and talent — read the person, diagnose the situation they can't see, and put them in position to win. The uniform changes. The job doesn't.</p>
+    </div>
+    <div class="mat-lines rv">
+      <div><b>&gt;</b> stance_and_motion — always moving, never flat-footed</div>
+      <div><b>&gt;</b> positioning — 90% of the win happens before the shot</div>
+      <div><b>&gt;</b> empathy — every kid learns the sport differently; coach the one in front of you</div>
+      <div><b>&gt;</b> resilience — the loss review is where champions are built</div>
+      <div><b>&gt;</b> shipped — seasons, tournaments, better humans</div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL -->
+<section id="personal" class="personal">
+  <div class="wrap">
+    <div class="sec-label rv">06 — Off the clock</div>
+    <p class="quote rv">Father first. <span>Everything else is a job title.</span></p>
+    <div class="p-cols">
+      <div class="p-col rv"><h4>Dad</h4><p>Raising kids in North Texas with honesty, routine, and the occasional mat drill in the living room. The divorce ended a marriage, not the mission — co-parenting is the longest project I'll ever ship, and the one I'm proudest of.</p></div>
+      <div class="p-col rv"><h4>Writer</h4><p>Essays, copy, and the occasional argument with a blank page. Writing is how an autistic brain does small talk — one honest sentence at a time.</p></div>
+      <div class="p-col rv"><h4>North Texan</h4><p>Dallas–Fort Worth, Texas Tech colors on game day, big skies and bigger appetites. The metroplex built for reinvention — fitting, since I've done a few.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-label rv">07 — Contact</div>
+    <h2 class="rv">Got a complex situation? Good. That's the specialty.</h2>
+    <p class="lede rv">Biotech copy, ecommerce campaigns, a site that needs to ship, or a conversation about neurodivergent talent — the inbox is open.</p>
+    <div class="contact-actions rv">
+      <a class="btn btn-solid" href="mailto:hello@example.com">Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/garycwaite/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://about.me/waitesolutions" target="_blank" rel="noopener">about.me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© <span id="yr"></span> Gary Waite — Dallas, Texas</span>
+    <span>built different, ships anyway · <a href="#top">back to top ↑</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

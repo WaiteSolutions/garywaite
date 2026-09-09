@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>g.waite — decrypting attention since [redacted]</title>
+<meta name="description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, collector, USA Wrestling coach. North Texas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0c0a;
+  --bg-raise:#0e110e;
+  --ink:#c8d3c8;
+  --ink-dim:#5f6b5f;
+  --ink-faint:#333b33;
+  --key:#7...e;      /* phosphor */
+  --key-dim:#2f5540;
+  --amber:#c99a4e;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+::selection{background:var(--key);color:var(--bg)}
+a{color:var(--key);text-decoration:none;border-bottom:1px solid var(--key-dim)}
+a:hover{color:#a9f0cd;border-color:var(--key)}
+.wrap{max-width:760px;margin:0 auto;padding:0 28px}
+
+/* scanline + vignette atmosphere */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.06) 0 1px,transparent 1px 3px);opacity:.5}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:radial-gradient(ellipse 120% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.55) 100%)}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,12,10,.92);border-bottom:1px solid var(--ink-faint);backdrop-filter:blur(6px)}
+.nav-in{max-width:760px;margin:0 auto;padding:0 28px;height:52px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.nav-id{color:var(--ink-dim);letter-spacing:.06em}
+.nav-id b{color:var(--key);font-weight:500}
+.nav-links{display:flex;gap:22px}
+.nav-links a{color:var(--ink-dim);border:none;font-size:12px;letter-spacing:.06em}
+.nav-links a:hover{color:var(--key)}
+@media(max-width:640px){.nav-links a:nth-child(-n+3){display:none}}
+
+/* hero */
+header{padding:170px 0 120px;position:relative}
+.cursor-line{font-size:12.5px;color:var(--ink-dim);margin-bottom:40px}
+.cursor-line .prompt{color:var(--key)}
+.blink{display:inline-block;width:8px;height:15px;background:var(--key);vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+h1{font-size:clamp(26px,4.6vw,40px);font-weight:700;letter-spacing:-.01em;line-height:1.3;color:#dfe8df}
+h1 .enc{color:var(--ink-faint);font-weight:400}
+.hero-story{margin-top:36px;color:var(--ink-dim);max-width:60ch;font-weight:300}
+.hero-story strong{color:var(--ink);font-weight:500}
+.hero-story em{color:var(--key);font-style:normal}
+.hero-actions{margin-top:52px;display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+.btn{padding:11px 22px;border:1px solid var(--key-dim);color:var(--key);border-radius:2px;transition:all .2s}
+.btn:hover{background:var(--key);color:var(--bg);border-color:var(--key)}
+.btn-q{border-color:var(--ink-faint);color:var(--ink-dim)}
+.btn-q:hover{background:var(--ink-dim);color:var(--bg);border-color:var(--ink-dim)}
+
+/* sections */
+section{padding:96px 0;border-top:1px solid var(--ink-faint)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+.sec-num{font-size:12px;color:var(--key);letter-spacing:.1em}
+.sec-hash{font-size:11px;color:var(--ink-faint);letter-spacing:.05em}
+h2{font-size:clamp(20px,3vw,26px);font-weight:700;color:#dfe8df;letter-spacing:-.01em;margin-bottom:26px}
+.story{color:var(--ink-dim);font-weight:300;max-width:62ch;margin-bottom:20px}
+.story strong{color:var(--ink);font-weight:500}
+.story em{color:var(--key);font-style:normal}
+.story .amber{color:var(--amber)}
+
+/* dossier rows */
+.dossier{margin-top:34px;border-top:1px dashed var(--ink-faint)}
+.d-row{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:13px 4px;border-bottom:1px dashed var(--ink-faint);font-size:13.5px}
+.d-row .k{color:var(--ink-faint);letter-spacing:.05em}
+.d-row .v{color:var(--ink)}
+.d-row .v .dim{color:var(--ink-dim);font-weight:300}
+@media(max-width:560px){.d-row{grid-template-columns:1fr;gap:2px}}
+
+/* transmissions (work) */
+.tx{border:1px solid var(--ink-faint);border-radius:3px;margin-bottom:14px;background:var(--bg-raise);transition:border-color .25s}
+.tx:hover{border-color:var(--key-dim)}
+.tx-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;font-size:13px;gap:16px}
+.tx-head .id{color:var(--key);letter-spacing:.06em}
+.tx-head .cls{color:var(--ink-faint);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+.tx-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.tx.open .tx-body{max-height:280px}
+.tx-inner{padding:0 20px 18px;color:var(--ink-dim);font-size:13.5px;font-weight:300;border-top:1px dashed var(--ink-faint);margin:0 0 0 0;padding-top:14px}
+.tx-inner .placeholder{color:var(--ink-faint)}
+.tx-toggle{color:var(--ink-faint);transition:transform .3s;font-size:12px}
+.tx.open .tx-toggle{transform:rotate(45deg);color:var(--key)}
+
+/* the mat — out of scope insights */
+.mat{background:var(--bg-raise);border-top:1px solid var(--ink-faint);border-bottom:1px solid var(--ink-faint)}
+.mat-tag{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(201,154,78,.35);padding:4px 12px;border-radius:2px;margin-bottom:24px}
+.insight{display:grid;grid-template-columns:34px 1fr;gap:18px;padding:22px 0;border-bottom:1px dashed var(--ink-faint)}
+.insight:last-of-type{border-bottom:none}
+.insight .glyph{color:var(--amber);font-size:14px;padding-top:3px}
+.insight h3{font-size:15px;font-weight:500;color:#dfe8df;margin-bottom:8px}
+.insight p{font-size:13.5px;color:var(--ink-dim);font-weight:300;max-width:58ch}
+.insight p strong{color:var(--ink);font-weight:500}
+
+/* library */
+.shelf-strip{display:flex;gap:5px;margin:30px 0 8px;height:64px;align-items:flex-end}
+.book{min-width:10px;flex:1;border-radius:1px 1px 0 0;opacity:.85}
+.shelf-base{height:2px;background:var(--ink-faint);margin-bottom:26px}
+.shelf-cap{font-size:11.5px;color:var(--ink-faint);letter-spacing:.08em}
+
+/* terminal footer/contact */
+.term{border:1px solid var(--ink-faint);border-radius:4px;background:#070907;margin-top:40px;font-size:13.5px}
+.term-bar{display:flex;gap:7px;padding:11px 16px;border-bottom:1px solid var(--ink-faint)}
+.term-bar span{width:9px;height:9px;border-radius:50%;background:var(--ink-faint)}
+.term-bar span:first-child{background:rgba(201,111,59,.6)}
+.term-body{padding:20px 16px}
+.term-line{padding:3px 0;color:var(--ink-dim);font-weight:300}
+.term-line .p{color:var(--key)}
+.term-line .out{color:var(--ink)}
+.term-line a{font-size:13.5px}
+
+footer{border-top:1px solid var(--ink-faint);padding:30px 0;font-size:11.5px;color:var(--ink-faint);letter-spacing:.05em}
+.foot-in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--ink-faint);border:none}
+footer a:hover{color:var(--key)}
+
+/* decode reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .blink{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <span class="nav-id"><b>g.waite</b>::dfw_tx</span>
+    <div class="nav-links">
+      <a href="#signal">signal</a>
+      <a href="#transmissions">transmissions</a>
+      <a href="#mat">the_mat</a>
+      <a href="#index">index</a>
+      <a href="#channel">open_channel</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="cursor-line rv"><span class="prompt">$</span> whois gary.waite --verbose <span class="blink"></span></div>
+    <h1 class="rv decode" data-text="Every brand is broadcasting a signal. Most are encrypted with the wrong key.">Every brand is broadcasting a signal. <span class="enc">M̷o̶s̸t̷ ̶a̸r̷e̶ ̸e̷n̸c̸r̶y̸p̶t̸e̷d̵ ̷w̸i̵t̷h̵ ̸t̷h̵e̸ ̵w̷r̵o̵n̷g̴ ̵k̷e̴y̶.</span></h1>
+    <p class="hero-story rv">I'm <strong>Gary Waite</strong> — digital marketer, <em>biotech &amp; ecommerce copywriter</em>, developer, talent manager, collector of libraries, and <strong>USA Wrestling coach</strong>. Twenty-plus years finding the plaintext inside complicated situations. I don't do noise. I do <em>the one honest sentence that makes a stranger act</em>.</p>
+    <div class="hero-actions rv">
+      <a class="btn" href="#transmissions">&gt; read_transmissions</a>
+      <a class="btn btn-q" href="https://www.linkedin.com/in/garycwaite/" target="_blank" rel="noopener">verify_identity (LinkedIn) ↗</a>
+    </div>
+  </div>
+</header>
+
+<!-- SIGNAL / STORY -->
+<section id="signal">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">01</span><span class="sec-hash">aHR0cHM6Ly9nLndhaXRlL3NpZ25hbA==</span></div>
+    <h2 class="rv decode" data-text="The origin story (decrypted).">The origin story <span class="enc">(̸d̶e̸c̷r̴y̸p̸t̶e̷d̷)</span>.</h2>
+    <p class="story rv">It started with problems nobody wanted. Insurance loss consulting — <strong>navigating situations people didn't see coming</strong> — taught me that every disaster has a structure, and structure can be read. That skill never left. It just changed costumes.</p>
+    <p class="story rv">Biotech needed someone who could <em>decrypt science and re-encrypt it as desire</em>. Ecommerce needed someone who understood that a cart abandoned is a message that failed to land. Talent needed an advocate who reads contracts the way I read rooms — <strong>line by line, looking for the human underneath</strong>.</p>
+    <p class="story rv">Somewhere in there: viral campaigns I'm not at liberty to over-explain <span class="amber">(the numbers live in the dossier)</span>, code that ships, a library that keeps growing, and a mat in a gym in North Texas where the real lessons get taught.</p>
+    <div class="dossier rv">
+      <div class="d-row"><span class="k">designation</span><span class="v">Gary Waite</span></div>
+      <div class="d-row"><span class="k">coordinates</span><span class="v">Dallas–Fort Worth, TX <span class="dim">// big skies, bigger reinvention</span></span></div>
+      <div class="d-row"><span class="k">training_ground</span><span class="v">Texas Tech University</span></div>
+      <div class="d-row"><span class="k">primary_keys</span><span class="v">copy · campaigns · code <span class="dim">// biotech + ecommerce specialization</span></span></div>
+      <div class="d-row"><span class="k">secondary_ops</span><span class="v">talent management · web development</span></div>
+      <div class="d-row"><span class="k">classified</span><span class="v">USA Wrestling coach <span class="dim">// clearance: the_mat</span></span></div>
+      <div class="d-row"><span class="k">artifacts</span><span class="v">a library, collected one spine at a time</span></div>
+      <div class="d-row"><span class="k">source_code</span><span class="v"><a href="https://github.com/WaiteSolutions/garywaite" target="_blank" rel="noopener">github.com/WaiteSolutions/garywaite</a></span></div>
+      <div class="d-row"><span class="k">status</span><span class="v" style="color:var(--key)">● accepting new transmissions</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSMISSIONS / WORK -->
+<section id="transmissions">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">02</span><span class="sec-hash">dHJhbnNtaXNzaW9uc19sb2c=</span></div>
+    <h2 class="rv decode" data-text="Intercepted transmissions.">Intercepted <span class="enc">t̶r̵a̵n̶s̷m̵i̶s̵s̵i̷o̵n̷s̸.</span></h2>
+    <p class="story rv">Five operations, declassified on request. <span class="dim placeholder" style="color:var(--ink-faint)">[ payload slots — real campaign names, links, and numbers decrypt on arrival. No fabricated metrics pass through this channel. ]</span></p>
+
+    <div class="tx rv">
+      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
+        <span><span class="id">TX-001</span> &nbsp;the one that broke the algorithm</span>
+        <span><span class="cls">cls: viral</span> <span class="tx-toggle">+</span></span>
+      </div>
+      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — the hook, the audience, the spread. When you send the real share/view/conversion figures, they decrypt here verbatim.</div></div>
+    </div>
+
+    <div class="tx rv">
+      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
+        <span><span class="id">TX-002</span> &nbsp;mechanism → message</span>
+        <span><span class="cls">cls: biotech</span> <span class="tx-toggle">+</span></span>
+      </div>
+      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — dense science in, copy a clinician or buyer actually reads out. Compliance-aware. Jargon-free.</div></div>
+    </div>
+
+    <div class="tx rv">
+      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
+        <span><span class="id">TX-003</span> &nbsp;the cart is a conversation</span>
+        <span><span class="cls">cls: ecommerce</span> <span class="tx-toggle">+</span></span>
+      </div>
+      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — PDPs, lifecycle flows, paid social. What moved after the words changed.</div></div>
+    </div>
+
+    <div class="tx rv">
+      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
+        <span><span class="id">TX-004</span> &nbsp;built, not just briefed</span>
+        <span><span class="cls">cls: dev</span> <span class="tx-toggle">+</span></span>
+      </div>
+      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — sites and products shipped end-to-end. The copywriter who can also deploy is a different species.</div></div>
+    </div>
+
+    <div class="tx rv">
+      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
+        <span><span class="id">TX-005</span> &nbsp;talent, advocated</span>
+        <span><span class="cls">cls: mgmt</span> <span class="tx-toggle">+</span></span>
+      </div>
+      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — people the industry underestimated, positioned where they won. Clear specs. Honest feedback. No politics.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE MAT — OUT OF SCOPE INSIGHTS -->
+<section id="mat" class="mat">
+  <div class="wrap">
+    <div class="mat-tag rv">out-of-scope intel // the_mat</div>
+    <div class="sec-head rv"><span class="sec-num">03</span><span class="sec-hash">dXNhX3dyZXN0bGluZ19jb2FjaA==</span></div>
+    <h2 class="rv decode" data-text="Everything I know about marketing, I learned coaching kids.">Everything I know about marketing, I learned <span class="enc">c̵o̷a̷c̷h̸i̶n̸g̵ ̵k̷i̸d̶s̵.</span></h2>
+    <p class="story rv">USA Wrestling coach. Weekends in gyms that smell like effort. The job is technically <em>out of scope</em> — it doesn't appear on invoices. It also happens to be the most honest leadership training money can't buy. Field notes, declassified:</p>
+
+    <div class="insight rv">
+      <span class="glyph">▸</span>
+      <div><h3>position_before_panic</h3><p>A kid who panics gets taken down. A kid who moves first, controls the center, and stays off their heels — dictates the match. <strong>Campaigns work identically.</strong> The brands that win aren't the loudest; they're the ones already in position when the moment shoots.</p></div>
+    </div>
+    <div class="insight rv">
+      <span class="glyph">▸</span>
+      <div><h3>coach_the_one_in_front_of_you</h3><p>Twelve kids, twelve operating systems. The drill that works for one confuses another. That's not a kid problem — it's a <strong>copy problem wearing a singlet</strong>. One message never fits a room. Segment or lose them.</p></div>
+    </div>
+    <div class="insight rv">
+      <span class="glyph">▸</span>
+      <div><h3>the_loss_review</h3><p>Nobody improves on the win. We watch the losses — frame by frame, no blame, just pattern. <strong>The best analytics meeting of my week happens in a folding chair</strong> after a kid loses 4–2 and asks what he missed.</p></div>
+    </div>
+    <div class="insight rv">
+      <span class="glyph">▸</span>
+      <div><h3>pressure_with_purpose</h3><p>Pressure without direction is just noise — and kids can smell noise. Same with audiences. <strong>Every push you put on a reader has to earn the right to move them somewhere</strong> they'll thank you for.</p></div>
+    </div>
+    <div class="insight rv">
+      <span class="glyph">▸</span>
+      <div><h3>get_up_one_more</h3><p>The only stat that matters in youth sports isn't on the scoreboard. It's whether they come back next season. Retention beats conquest. <strong>It always has. On the mat, in email, in life.</strong></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIBRARY / INDEX -->
+<section id="index">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">04</span><span class="sec-hash">aW5kZXhfY29sbGVjdGlvbg==</span></div>
+    <h2 class="rv decode" data-text="The index: a library, collected.">The index: <span class="enc">a̸ ̵l̴i̵b̸r̶a̵r̷y̴,̶ ̵c̵o̸l̶l̸e̸c̴t̷e̵d̶.</span></h2>
+    <div class="shelf-strip rv" aria-hidden="true">
+      <div class="book" style="height:62%;background:#3d5c47"></div><div class="book" style="height:88%;background:#7a4a2e"></div>
+      <div class="book" style="height:70%;background:#2f4a5c"></div><div class="book" style="height:95%;background:#7e6d3f"></div>
+      <div class="book" style="height:58%;background:#5c2f3d"></div><div class="book" style="height:82%;background:#3f5c4a"></div>
+      <div class="book" style="height:66%;background:#c99a4e"></div><div class="book" style="height:90%;background:#2f3d5c"></div>
+      <div class="book" style="height:74%;background:#5c4a2f"></div><div class="book" style="height:60%;background:#3d5c47"></div>
+      <div class="book" style="height:86%;background:#7a4a2e"></div><div class="book" style="height:68%;background:#4a5c3f"></div>
+      <div class="book" style="height:92%;background:#2f4a5c"></div><div class="book" style="height:56%;background:#7e6d3f"></div>
+    </div>
+    <div class="shelf-base rv"></div>
+    <p class="shelf-cap rv">fig. 01 — partial index, physically rendered</p>
+    <p class="story rv" style="margin-top:26px">Every book is a key I wanted to own. Biotech adjacent, marketing canon, wrestling history, and spines nobody else keeps. <strong>Copywriting is just librarianship with a deadline</strong> — know where everything is, pull the right volume, quote it exactly. Clients get the footnote. Readers get <em>someone who actually read the thing</em>.</p>
+  </div>
+</section>
+
+<!-- CHANNEL / CONTACT -->
+<section id="channel">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">05</span><span class="sec-hash">b3Blbl9jaGFubmVs</span></div>
+    <h2 class="rv decode" data-text="Open channel.">Open <span class="enc">c̸h̸a̴n̵n̶e̷l̶.</span></h2>
+    <p class="story rv">Biotech copy, ecommerce campaigns, a build that needs shipping, talent that needs advocating — <strong>send the encrypted version. I'll find the plaintext.</strong></p>
+    <div class="term rv">
+      <div class="term-bar"><span></span><span></span><span></span></div>
+      <div class="term-body">
+        <div class="term-line"><span class="p">$</span> establish_handshake --target gary.waite</div>
+        <div class="term-line"><span class="out">→ email ......... </span><a href="mailto:gary@garywaite.net">gary@garywaite.net</a></div>
+        <div class="term-line"><span class="out">→ linkedin ...... </span><a href="https://www.linkedin.com/in/garycwaite/" target="_blank" rel="noopener">/in/garycwaite</a></div>
+        <div class="term-line"><span class="out">→ github ........ </span><a href="https://github.com/WaiteSolutions/garywaite" target="_blank" rel="noopener">WaiteSolutions/garywaite</a></div>
+        <div class="term-line"><span class="out">→ about.me ...... </span><a href="https://about.me/waitesolutions" target="_blank" rel="noopener">/waitesolutions</a></div>
+        <div class="term-line"><span class="p">$</span> response_time --expected</div>
+        <div class="term-line"><span class="out">→ 24–48h. Faster if the problem is interesting.</span></div>
+        <div class="term-line"><span class="p">$</span> <span class="blink"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© <span id="yr"></span> g.waite :: north texas :: all transmissions logged</span>
+    <span><a href="#top">↑ return_to_surface</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* decode-on-scroll for .rv */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* text-scramble decode for h1/h2 (respect reduced motion) */
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){
+  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&/\\@!?$*+=<>█▓▒░';
+  const scramble=(el)=>{
+    const target=el.dataset.text;
+    if(!target)return;
+    let frame=0;const dur=Math.min(34,target.length*1.6+18);
+    const encSpans=el.querySelectorAll('.enc');
+    const tick=()=>{
+      const progress=frame/dur;
+      const revealCount=Math.floor(progress*target.length*1.35);
+      // rebuild: decoded prefix + scrambled tail, preserving .enc spans only until fully decoded
+      let out='';let scrambled=false;
+      for(let i=0;i<target.length;i++){
+        if(i<revealCount){out+=target[i];}
+        else{out+= target[i]===' '?' ':chars[Math.floor(Math.random()*chars.length)];scrambled=true;}
+      }
+      if(scrambled){el.textContent=out;}
+      else{el.textContent=target;}
+      frame++;
+      if(frame<=dur)requestAnimationFrame(tick);
+    };
+    tick();
+  };
+  const sio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){scramble(e.target);sio.unobserve(e.target)}})},{threshold:.4});
+  document.querySelectorAll('.decode').forEach(el=>sio.observe(el));
+}
+</script>
+</body>
+</html>
