@@ -1,21 +1,11 @@
 # garywaite
 
-**Built different, ships anyway.**
+[garywaite.net](https://garywaite.net/) is the personal site of Gary Waite, a digital marketer, biotech and ecommerce copywriter, and web developer. It brings together field notes on copy, code, and coaching in a terminal-style interface.
 
-Personal site of Gary Waite — digital marketer, biotech & ecommerce copywriter, web developer, writer, and researcher in North Texas. USA Wrestling coach and an active parent supporting youth sports.
+## Local preview
 
-## Live
+From the repository root, run `python3 -m http.server 8000` and open [localhost:8000](http://localhost:8000/).
 
-Vercel → https://garywaite.net
+The page, styles, and scripts live in [`index.html`](index.html). There’s no build step or package install. Heading decodes respect the visitor’s reduced-motion preference.
 
-## Stack
-
-Zero-dependency static HTML/CSS/JS. JetBrains Mono via Google Fonts. CRT scanline atmosphere, decode-on-scroll scramble headings, expandable "transmission" case files. Respects `prefers-reduced-motion`.
-
-## Local
-
-Open `index.html` in a browser. That's it.
-
-## Contact
-
-[LinkedIn](https://www.linkedin.com/in/garycwaite/) · [about.me](https://about.me/waitesolutions)
+The production site is hosted on Vercel and deploys from `main`.
