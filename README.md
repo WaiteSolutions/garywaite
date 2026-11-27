@@ -2,7 +2,7 @@
 
 **Built different, ships anyway.**
 
-Personal site of Gary Waite — digital marketer, biotech & ecommerce copywriter, web developer, writer, researcher, USA Wrestling coach. North Texas.
+Personal site of Gary Waite — digital marketer, biotech & ecommerce copywriter, web developer, writer, and researcher in North Texas. USA Wrestling coach and an active parent supporting youth sports.
 
 ## Live
 

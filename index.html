@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gary Waite — Digital Marketer & Biotech/Ecommerce Copywriter | DFW</title>
-<meta name="description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, writer, researcher, USA Wrestling coach. North Texas.">
+<meta name="description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, writer, and researcher in North Texas. USA Wrestling coach and youth sports parent.">
 <link rel="canonical" href="https://garywaite.net/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://garywaite.net/">
 <meta property="og:title" content="Gary Waite — Find the plaintext">
-<meta property="og:description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, writer, researcher, USA Wrestling coach. North Texas.">
+<meta property="og:description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, writer, and researcher in North Texas. USA Wrestling coach and youth sports parent.">
 <meta property="og:image" content="https://garywaite.net/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Gary Waite — Find the plaintext">
-<meta name="twitter:description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, writer, researcher, USA Wrestling coach. North Texas.">
+<meta name="twitter:description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, writer, and researcher in North Texas. USA Wrestling coach and youth sports parent.">
 <meta name="twitter:image" content="https://garywaite.net/og.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -26,7 +26,7 @@
   "name": "Gary Waite",
   "url": "https://garywaite.net/",
   "email": "mailto:gary@garywaite.net",
-  "description": "Digital marketer, biotech & ecommerce copywriter, developer, writer, researcher, and USA Wrestling coach in North Texas.",
+  "description": "Digital marketer, biotech & ecommerce copywriter, developer, writer, and researcher in North Texas who is also a USA Wrestling coach and youth sports parent.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Dallas-Fort Worth",
@@ -48,7 +48,7 @@
 <style>
 :root {
   color-scheme: dark;
-  --bg: #0b100e;
+  --bg: #0a0d0b;
   --panel: #111914;
   --ink: #dce8df;
   --muted: #a5b7aa;
@@ -61,7 +61,7 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: radial-gradient(ellipse at 80% 0, #15241b 0, transparent 38rem), var(--bg);
+  background: var(--bg);
   color: var(--ink);
   font: 400 1rem/1.7 "JetBrains Mono", ui-monospace, monospace;
 }
@@ -94,13 +94,17 @@ nav a { display: block; padding-block: 8px; text-decoration: none; }
 .nav-links a { color: var(--muted); }
 .nav-links a:hover { color: var(--signal); }
 header, section { scroll-margin-top: 7rem; }
-header { padding-block: clamp(60px, 10vw, 132px) clamp(52px, 8vw, 92px); }
+header { padding-block: clamp(54px, 12vw, 154px) clamp(52px, 8vw, 92px); }
 section { padding-block: clamp(46px, 8vw, 78px); border-top: 1px solid var(--line); }
 h1, h2, h3, p { margin: 0; }
 h1, h2 { line-height: 1.15; letter-spacing: -.045em; overflow-wrap: anywhere; }
-h1 { font-size: clamp(2.15rem, 7vw, 4.6rem); max-width: 16ch; }
+h1 { font-size: clamp(1.9rem, 5.3vw, 3.6rem); max-width: 30ch; }
+h1 .decode { color: inherit; text-shadow: -1px 0 #9ce9bb55, 1px 0 #e5bd7b55; }
+h1 .decode[data-scramble] { color: transparent; text-shadow: none; }
+header .prompt { margin-bottom: clamp(20px, 5vw, 42px); }
 h2 { font-size: clamp(1.75rem, 4.8vw, 2.55rem); margin-bottom: 22px; }
 .lead { color: var(--ink); margin-top: 24px; font-size: clamp(1rem, 2.4vw, 1.175rem); max-width: 59ch; }
+.lead strong { color: var(--signal); font-weight: 500; }
 .label, .prompt { color: var(--muted); margin-bottom: 14px; }
 .label { letter-spacing: .075em; text-transform: uppercase; }
 .prompt b, .label b, .status { color: var(--signal); }
@@ -138,6 +142,10 @@ h2 { font-size: clamp(1.75rem, 4.8vw, 2.55rem); margin-bottom: 22px; }
   text-decoration: none;
 }
 .button:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.actions .button { background: transparent; color: var(--signal); font-weight: 500; }
+.actions .button:hover { background: var(--signal); color: var(--bg); }
+.actions .button.secondary { border-color: var(--line); color: var(--muted); }
+.actions .button.secondary:hover { color: var(--bg); }
 .dossier, .contact-links { margin: 28px 0 0; }
 .dossier div, .contact-links div {
   display: grid;
@@ -202,6 +210,7 @@ footer { border-top: 1px solid var(--line); color: var(--muted); padding-block: 
   .cursor { animation: none; }
   .tx { transition: none; }
   .decode[data-scramble] { color: var(--signal); }
+  h1 .decode[data-scramble] { color: var(--ink); }
   .decode[data-scramble]::after { content: none; }
 }
 </style>
@@ -209,25 +218,25 @@ footer { border-top: 1px solid var(--line); color: var(--muted); padding-block: 
 <body>
 <nav aria-label="Primary">
   <div class="wrap nav-in">
-    <a class="brand" href="#top">g.waite::dfw</a>
+    <a class="brand" href="#top">g.waite::dfw_tx</a>
     <div class="nav-links">
       <a href="#signal">signal</a>
       <a href="#transmissions">transmissions</a>
-      <a href="#mat">the mat</a>
-      <a href="#channel">channel</a>
+      <a href="#mat">the_mat</a>
+      <a href="#channel">open_channel</a>
     </div>
   </div>
 </nav>
 
 <header id="top">
   <div class="wrap">
-    <p class="prompt"><b>$</b> whois gary.waite <span class="cursor" aria-hidden="true"></span></p>
-    <h1>Find the <span class="decode">plaintext.</span></h1>
-    <p class="lead">I’m Gary Waite, a digital marketer and copywriter for biotech and ecommerce. I also ship code and coach youth wrestling.</p>
-    <p class="lead">I write the one honest sentence that gives a stranger a reason to act.</p>
+    <p class="prompt"><b>$</b> whois gary.waite --verbose <span class="cursor" aria-hidden="true"></span></p>
+    <h1>Every brand is broadcasting a signal. Yours deserves the right <span class="decode">key.</span></h1>
+    <p class="lead">I’m <strong>Gary Waite</strong>, a digital marketer, biotech &amp; ecommerce copywriter, developer, writer, and talent manager. I find the plaintext in complicated situations and ship the code it runs on.</p>
+    <p class="lead">I write <strong>the one honest sentence that makes a stranger act.</strong></p>
     <div class="actions">
-      <a class="button" href="#transmissions">Read transmissions <span aria-hidden="true">↓</span></a>
-      <a href="#channel">Open channel</a>
+      <a class="button" href="#transmissions"><span aria-hidden="true">&gt;</span> read_transmissions</a>
+      <a class="button secondary" href="https://www.linkedin.com/in/garycwaite/">verify_identity (LinkedIn) <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </header>
@@ -236,15 +245,15 @@ footer { border-top: 1px solid var(--line); color: var(--muted); padding-block: 
   <section id="signal">
     <div class="wrap">
       <p class="label"><b>01</b> / signal</p>
-      <h2>Where I learned to <span class="decode">listen.</span></h2>
-      <p class="story">I started in insurance loss consulting. When the accounts of what happened didn’t line up, I had to sort out what we knew, what we could verify, and what needed to happen next. I start a brief the same way.</p>
-      <p class="story">In biotech, that means tracing the claim back to the evidence and explaining why it matters to a clinician or buyer. In ecommerce, it means finding the question a shopper still has and answering it before they leave.</p>
+      <h2>The origin story <span class="decode">(decrypted).</span></h2>
+      <p class="story">It started with problems nobody wanted. In insurance loss consulting, I learned to read the structure of a mess: what happened, what we could verify, and what had to happen next. I still start a brief that way.</p>
+      <p class="story">Biotech taught me to publish only what I’d defend out loud. Ecommerce keeps me honest in a different way. Find the question the shopper still has and answer it before they leave.</p>
       <p class="story">I work with designers and researchers, and I can carry the copy through to a live page. <strong>The same person who wrote the sentence can see how it works on the screen.</strong></p>
       <dl class="dossier">
         <div><dt>coordinates</dt><dd>Dallas–Fort Worth, TX</dd></div>
         <div><dt>education</dt><dd>Texas Tech University</dd></div>
         <div><dt>work</dt><dd>Copy · campaigns · web development · talent management</dd></div>
-        <div><dt>off the clock</dt><dd>USA Wrestling coach</dd></div>
+        <div><dt>beyond scope</dt><dd>USA Wrestling coach · youth sports parent · <a href="#mat">field notes</a></dd></div>
         <div><dt>status</dt><dd class="status">● Open to project inquiries</dd></div>
       </dl>
     </div>
@@ -287,7 +296,7 @@ footer { border-top: 1px solid var(--line); color: var(--muted); padding-block: 
         <details class="tx">
           <summary><span class="id">TX-005</span><span class="tx-title">Give good people a clear brief</span><span class="cls">talent management</span></summary>
           <div class="tx-body">
-            <p>In the corner I give the wrestler one adjustment they can use. With designers and researchers, that means putting the audience and the decision in the brief, then giving feedback specific enough to make the next draft better.</p>
+            <p>In the corner, I learned to give a wrestler one adjustment they could use. With designers and researchers, that means putting the audience and the decision in the brief, then giving feedback specific enough to make the next draft better.</p>
             <span class="payload">[encrypted] Collaborators and project details</span>
           </div>
         </details>
@@ -298,15 +307,16 @@ footer { border-top: 1px solid var(--line); color: var(--muted); padding-block: 
 
   <section id="mat" class="mat">
     <div class="wrap">
-      <p class="label"><b>03</b> / the mat</p>
+      <p class="label"><b>03</b> / beyond scope</p>
       <h2>Notes from the <span class="decode">corner.</span></h2>
-      <p class="story">I coach youth wrestling in North Texas. I want kids to take care of the room, take ownership of their training, and want to come back next season. A few lessons travel well.</p>
+      <p class="story">Youth sports are one way I give back in North Texas. As a parent and USA Wrestling coach, I want kids to build the kind of confidence that comes from doing something hard and getting a little better at it.</p>
+      <p class="story">On the mat, discipline looks like showing up, putting in the reps, and helping your teammate get better. Coaching taught me to watch where someone gets stuck and give them one next move they can use.</p>
       <ul class="insights">
         <li><h3>Position before panic</h3><p class="story">Control the center before your opponent forces a reaction. In a campaign, choose the audience and the problem you’ll own before the launch clock starts.</p></li>
         <li><h3>Coach the one in front of you</h3><p class="story">One cue can click for one wrestler and confuse the next. Segment by what readers already know and what they still need to hear.</p></li>
         <li><h3>Review the loss</h3><p class="story">Rewatch the exchange that cost you the match. In a funnel, find where people stopped and test one change at that step.</p></li>
         <li><h3>Pressure with purpose</h3><p class="story">Pressure earns its keep when it creates an opening. Give a reader a concrete reason to act and make the next step easy to take.</p></li>
-        <li><h3>Give them a reason to return</h3><p class="story">I watch who comes back next season. In ecommerce, track the second purchase and give customers a useful reason to make it.</p></li>
+        <li><h3>Give them a reason to return</h3><p class="story">On the mat, I care about who comes back the next season. In ecommerce, track the second purchase and give customers a useful reason to make it.</p></li>
       </ul>
     </div>
   </section>
