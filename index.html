@@ -8,13 +8,13 @@
 <link rel="canonical" href="https://garywaite.net/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://garywaite.net/">
-<meta property="og:title" content="g.waite — decrypting attention since [redacted]">
+<meta property="og:title" content="Gary Waite — Find the plaintext">
 <meta property="og:description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, writer, researcher, USA Wrestling coach. North Texas.">
 <meta property="og:image" content="https://garywaite.net/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="g.waite — decrypting attention since [redacted]">
+<meta name="twitter:title" content="Gary Waite — Find the plaintext">
 <meta name="twitter:description" content="Gary Waite. Digital marketer, biotech & ecommerce copywriter, developer, writer, researcher, USA Wrestling coach. North Texas.">
 <meta name="twitter:image" content="https://garywaite.net/og.png">
 <link rel="icon" type="image/png" href="/favicon.png">
@@ -44,323 +44,335 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0a0c0a;
-  --bg-raise:#0e110e;
-  --ink:#c8d3c8;
-  --ink-dim:#5f6b5f;
-  --ink-faint:#333b33;
-  --key:#7...e;      /* phosphor */
-  --key-dim:#2f5540;
-  --amber:#c99a4e;
-  --mono:"JetBrains Mono",ui-monospace,monospace;
+:root {
+  color-scheme: dark;
+  --bg: #0b100e;
+  --panel: #111914;
+  --ink: #dce8df;
+  --muted: #a5b7aa;
+  --line: #304339;
+  --signal: #9ce9bb;
+  --amber: #e5bd7b;
+  --gutter: clamp(16px, 5vw, 40px);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
-::selection{background:var(--key);color:var(--bg)}
-a{color:var(--key);text-decoration:none;border-bottom:1px solid var(--key-dim)}
-a:hover{color:#a9f0cd;border-color:var(--key)}
-.wrap{max-width:760px;margin:0 auto;padding:0 28px}
-
-/* scanline + vignette atmosphere */
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
-  background:repeating-linear-gradient(0deg,rgba(0,0,0,.06) 0 1px,transparent 1px 3px);opacity:.5}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
-  background:radial-gradient(ellipse 120% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.55) 100%)}
-
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,12,10,.92);border-bottom:1px solid var(--ink-faint);backdrop-filter:blur(6px)}
-.nav-in{max-width:760px;margin:0 auto;padding:0 28px;height:52px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
-.nav-id{color:var(--ink-dim);letter-spacing:.06em}
-.nav-id b{color:var(--key);font-weight:500}
-.nav-links{display:flex;gap:22px}
-.nav-links a{color:var(--ink-dim);border:none;font-size:12px;letter-spacing:.06em}
-.nav-links a:hover{color:var(--key)}
-@media(max-width:640px){.nav-links a:nth-child(-n+3){display:none}}
-
-/* hero */
-header{padding:170px 0 120px;position:relative}
-.cursor-line{font-size:12.5px;color:var(--ink-dim);margin-bottom:40px}
-.cursor-line .prompt{color:var(--key)}
-.blink{display:inline-block;width:8px;height:15px;background:var(--key);vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-h1{font-size:clamp(26px,4.6vw,40px);font-weight:700;letter-spacing:-.01em;line-height:1.3;color:#dfe8df}
-h1 .enc{color:var(--ink-faint);font-weight:400}
-.hero-story{margin-top:36px;color:var(--ink-dim);max-width:60ch;font-weight:300}
-.hero-story strong{color:var(--ink);font-weight:500}
-.hero-story em{color:var(--key);font-style:normal}
-.hero-actions{margin-top:52px;display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
-.btn{padding:11px 22px;border:1px solid var(--key-dim);color:var(--key);border-radius:2px;transition:all .2s}
-.btn:hover{background:var(--key);color:var(--bg);border-color:var(--key)}
-.btn-q{border-color:var(--ink-faint);color:var(--ink-dim)}
-.btn-q:hover{background:var(--ink-dim);color:var(--bg);border-color:var(--ink-dim)}
-
-/* sections */
-section{padding:96px 0;border-top:1px solid var(--ink-faint)}
-.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
-.sec-num{font-size:12px;color:var(--key);letter-spacing:.1em}
-.sec-hash{font-size:11px;color:var(--ink-faint);letter-spacing:.05em}
-h2{font-size:clamp(20px,3vw,26px);font-weight:700;color:#dfe8df;letter-spacing:-.01em;margin-bottom:26px}
-.story{color:var(--ink-dim);font-weight:300;max-width:62ch;margin-bottom:20px}
-.story strong{color:var(--ink);font-weight:500}
-.story em{color:var(--key);font-style:normal}
-.story .amber{color:var(--amber)}
-.redacted{color:var(--ink-faint);letter-spacing:.12em;user-select:none}
-
-/* dossier rows */
-.dossier{margin-top:34px;border-top:1px dashed var(--ink-faint)}
-.d-row{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:13px 4px;border-bottom:1px dashed var(--ink-faint);font-size:13.5px}
-.d-row .k{color:var(--ink-faint);letter-spacing:.05em}
-.d-row .v{color:var(--ink)}
-.d-row .v .dim{color:var(--ink-dim);font-weight:300}
-@media(max-width:560px){.d-row{grid-template-columns:1fr;gap:2px}}
-
-/* transmissions (work) */
-.tx{border:1px solid var(--ink-faint);border-radius:3px;margin-bottom:14px;background:var(--bg-raise);transition:border-color .25s}
-.tx:hover{border-color:var(--key-dim)}
-.tx-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;font-size:13px;gap:16px}
-.tx-head .id{color:var(--key);letter-spacing:.06em}
-.tx-head .cls{color:var(--ink-faint);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
-.tx-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.tx.open .tx-body{max-height:280px}
-.tx-inner{padding:0 20px 18px;color:var(--ink-dim);font-size:13.5px;font-weight:300;border-top:1px dashed var(--ink-faint);margin:0 0 0 0;padding-top:14px}
-.tx-inner .placeholder{color:var(--ink-faint)}
-.tx-toggle{color:var(--ink-faint);transition:transform .3s;font-size:12px}
-.tx.open .tx-toggle{transform:rotate(45deg);color:var(--key)}
-
-/* the mat — out of scope insights */
-.mat{background:var(--bg-raise);border-top:1px solid var(--ink-faint);border-bottom:1px solid var(--ink-faint)}
-.mat-tag{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(201,154,78,.35);padding:4px 12px;border-radius:2px;margin-bottom:24px}
-.insight{display:grid;grid-template-columns:34px 1fr;gap:18px;padding:22px 0;border-bottom:1px dashed var(--ink-faint)}
-.insight:last-of-type{border-bottom:none}
-.insight .glyph{color:var(--amber);font-size:14px;padding-top:3px}
-.insight h3{font-size:15px;font-weight:500;color:#dfe8df;margin-bottom:8px}
-.insight p{font-size:13.5px;color:var(--ink-dim);font-weight:300;max-width:58ch}
-.insight p strong{color:var(--ink);font-weight:500}
-
-/* terminal footer/contact */
-.term{border:1px solid var(--ink-faint);border-radius:4px;background:#070907;margin-top:40px;font-size:13.5px}
-.term-bar{display:flex;gap:7px;padding:11px 16px;border-bottom:1px solid var(--ink-faint)}
-.term-bar span{width:9px;height:9px;border-radius:50%;background:var(--ink-faint)}
-.term-bar span:first-child{background:rgba(201,111,59,.6)}
-.term-body{padding:20px 16px}
-.term-line{padding:3px 0;color:var(--ink-dim);font-weight:300}
-.term-line .p{color:var(--key)}
-.term-line .out{color:var(--ink)}
-.term-line a{font-size:13.5px}
-
-footer{border-top:1px solid var(--ink-faint);padding:30px 0;font-size:11.5px;color:var(--ink-faint);letter-spacing:.05em}
-.foot-in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-footer a{color:var(--ink-faint);border:none}
-footer a:hover{color:var(--key)}
-
-/* decode reveal */
-.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .blink{animation:none}
-  html{scroll-behavior:auto}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 80% 0, #15241b 0, transparent 38rem), var(--bg);
+  color: var(--ink);
+  font: 400 1rem/1.7 "JetBrains Mono", ui-monospace, monospace;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: repeating-linear-gradient(0deg, #0000000b 0 1px, transparent 1px 4px);
+}
+::selection { background: var(--signal); color: var(--bg); }
+a { color: var(--signal); text-underline-offset: .25em; overflow-wrap: anywhere; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+.wrap { width: min(100%, 890px); margin-inline: auto; padding-inline: var(--gutter); }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.nav-in, .nav-links, .actions, .foot-in { display: flex; flex-wrap: wrap; align-items: center; }
+.nav-in, .foot-in { justify-content: space-between; gap: 4px 20px; }
+.nav-in { padding-block: 8px; }
+.nav-links { gap: 0 clamp(10px, 3vw, 24px); }
+nav a { display: block; padding-block: 8px; text-decoration: none; }
+.brand, .nav-links, .label, .prompt, .status, footer { font-size: .8125rem; }
+.nav-links a { color: var(--muted); }
+.nav-links a:hover { color: var(--signal); }
+header, section { scroll-margin-top: 7rem; }
+header { padding-block: clamp(60px, 10vw, 132px) clamp(52px, 8vw, 92px); }
+section { padding-block: clamp(46px, 8vw, 78px); border-top: 1px solid var(--line); }
+h1, h2, h3, p { margin: 0; }
+h1, h2 { line-height: 1.15; letter-spacing: -.045em; overflow-wrap: anywhere; }
+h1 { font-size: clamp(2.15rem, 7vw, 4.6rem); max-width: 16ch; }
+h2 { font-size: clamp(1.75rem, 4.8vw, 2.55rem); margin-bottom: 22px; }
+.lead { color: var(--ink); margin-top: 24px; font-size: clamp(1rem, 2.4vw, 1.175rem); max-width: 59ch; }
+.label, .prompt { color: var(--muted); margin-bottom: 14px; }
+.label { letter-spacing: .075em; text-transform: uppercase; }
+.prompt b, .label b, .status { color: var(--signal); }
+.cursor {
+  display: inline-block;
+  width: .6em;
+  height: 1em;
+  margin-inline-start: .25em;
+  vertical-align: -.13em;
+  background: var(--signal);
+  animation: cursor 1.2s steps(1) 3;
+}
+@keyframes cursor { 50% { opacity: .25; } }
+.decode { position: relative; display: inline-block; color: var(--signal); }
+.decode[data-scramble] { color: transparent; }
+.decode[data-scramble]::after {
+  content: attr(data-scramble) / "";
+  position: absolute;
+  inset: 0;
+  color: var(--signal);
+  opacity: .75;
+}
+.story { max-width: 66ch; color: var(--muted); }
+.story + .story { margin-top: 14px; }
+.story strong { color: var(--ink); font-weight: 500; }
+.actions { gap: 10px 20px; margin-top: 28px; }
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px solid var(--signal);
+  border-radius: 3px;
+  background: var(--signal);
+  color: var(--bg);
+  font-weight: 700;
+  text-decoration: none;
+}
+.button:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.dossier, .contact-links { margin: 28px 0 0; }
+.dossier div, .contact-links div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr);
+  gap: 2px 18px;
+  padding: 10px 0;
+  border-top: 1px dashed var(--line);
+}
+dt { color: var(--muted); }
+dd { margin: 0; overflow-wrap: anywhere; }
+.dossier, .contact-links { font-size: .875rem; }
+.log { margin-top: 26px; }
+.tx {
+  margin-block: 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  transition: border-color .18s, background-color .18s;
+}
+.tx:hover, .tx:focus-within, .tx[open] { border-color: #638b73; background: #152119; }
+.tx summary {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content 1ch;
+  grid-template-areas: "id title class toggle";
+  align-items: baseline;
+  gap: 2px 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  list-style: none;
+}
+.tx summary::-webkit-details-marker { display: none; }
+.tx summary::after { content: "+" / ""; grid-area: toggle; color: var(--signal); }
+.tx[open] summary::after { content: "−" / ""; }
+.id { grid-area: id; color: var(--signal); }
+.tx-title { grid-area: title; font-weight: 700; overflow-wrap: anywhere; }
+.cls { grid-area: class; color: var(--muted); }
+.id, .cls, .payload, .log-note { font-size: .8125rem; }
+.tx-body { margin-inline: 16px; padding-block: 14px 16px; border-top: 1px dashed var(--line); }
+.tx-body p { color: var(--muted); }
+.payload { display: block; margin-top: 12px; color: var(--amber); }
+.log-note { color: var(--muted); margin-top: 16px; }
+.log-note b { color: var(--amber); font-weight: 500; }
+.mat { background: #101813; }
+.insights { margin: 22px 0 0; padding: 0; list-style: none; }
+.insights li { padding: 16px 0; border-top: 1px dashed var(--line); }
+.insights h3 { font-size: 1rem; margin-bottom: 4px; }
+.insights h3::before { content: "▸ " / ""; color: var(--amber); }
+.term { margin-top: 24px; padding: clamp(14px, 4vw, 24px); border: 1px solid var(--line); background: var(--panel); border-radius: 4px; }
+footer { border-top: 1px solid var(--line); color: var(--muted); padding-block: 22px; }
+@media (max-width: 550px) {
+  .tx summary {
+    grid-template-columns: max-content minmax(0, 1fr) 1ch;
+    grid-template-areas: "id class toggle" "title title title";
+    gap: 3px 12px;
+  }
+}
+@media (max-width: 400px) {
+  .dossier div, .contact-links div { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cursor { animation: none; }
+  .tx { transition: none; }
+  .decode[data-scramble] { color: var(--signal); }
+  .decode[data-scramble]::after { content: none; }
 }
 </style>
 </head>
 <body>
-
-<nav>
-  <div class="nav-in">
-    <span class="nav-id"><b>g.waite</b>::dfw_tx</span>
+<nav aria-label="Primary">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">g.waite::dfw</a>
     <div class="nav-links">
       <a href="#signal">signal</a>
       <a href="#transmissions">transmissions</a>
-      <a href="#mat">the_mat</a>
-      <a href="#channel">open_channel</a>
+      <a href="#mat">the mat</a>
+      <a href="#channel">channel</a>
     </div>
   </div>
 </nav>
 
 <header id="top">
   <div class="wrap">
-    <div class="cursor-line rv"><span class="prompt">$</span> whois gary.waite --verbose <span class="blink"></span></div>
-    <h1 class="rv decode" data-text="Every brand is broadcasting a signal. Yours deserves the right key.">Every brand is broadcasting a signal. <span class="enc">Y̶o̷u̵r̶s̷ ̸d̵e̸s̷e̸r̸v̴e̵s̵ ̵t̵h̸e̸ ̷r̷i̸g̸h̸t̷ ̷k̸e̸y̵.</span></h1>
-    <p class="hero-story rv">I'm <strong>Gary Waite</strong> — digital marketer, <em>biotech &amp; ecommerce copywriter</em>, developer, talent manager, writer, and a USA Wrestling coach raising athletes I intend to see grow into stewards of the gym, their fitness, and their own potential. Twenty-plus years finding the plaintext inside complicated situations. I don't do noise. I do <em>the one honest sentence that makes a stranger act</em>.</p>
-    <div class="hero-actions rv">
-      <a class="btn" href="#transmissions">&gt; read_transmissions</a>
-      <a class="btn btn-q" href="https://www.linkedin.com/in/garycwaite/" target="_blank" rel="noopener">verify_identity (LinkedIn) ↗</a>
+    <p class="prompt"><b>$</b> whois gary.waite <span class="cursor" aria-hidden="true"></span></p>
+    <h1>Find the <span class="decode">plaintext.</span></h1>
+    <p class="lead">I’m Gary Waite, a digital marketer and copywriter for biotech and ecommerce. I also ship code and coach youth wrestling.</p>
+    <p class="lead">I write the one honest sentence that gives a stranger a reason to act.</p>
+    <div class="actions">
+      <a class="button" href="#transmissions">Read transmissions <span aria-hidden="true">↓</span></a>
+      <a href="#channel">Open channel</a>
     </div>
   </div>
 </header>
 
-<!-- SIGNAL / STORY -->
-<section id="signal">
-  <div class="wrap">
-    <div class="sec-head rv"><span class="sec-num">01</span><span class="sec-hash">aHR0cHM6Ly9nLndhaXRlL3NpZ25hbA==</span></div>
-    <h2 class="rv decode" data-text="The origin story (decrypted).">The origin story <span class="enc">(̸d̶e̸c̷r̴y̸p̸t̶e̷d̷)</span>.</h2>
-    <p class="story rv">It started with problems nobody wanted. Insurance loss consulting — <strong>navigating situations people didn't see coming</strong> — taught me that every disaster has a structure, and structure can be read. That skill never left. It just changed costumes.</p>
-    <p class="story rv">Copy that lives anywhere near science or regulation taught me the standard I still write by: <strong>build slow, verify hard, and publish only what you'd defend out loud.</strong> Ecommerce is the counterweight that keeps it human — an abandoned cart isn't a compliance problem, it's just a message that failed to land.</p>
-    <p class="story rv">Somewhere in there: viral campaigns I'm not at liberty to over-explain <span class="amber">(the numbers live in the dossier)</span>, code that ships, research rabbit holes with no bottom, and a mat in a gym in North Texas where the real lessons get taught.</p>
-    <p class="story rv">There's also a title on the résumé — <em>talent management</em> — that started as an inside joke and stayed because it's true: I've loved hiring and collaborating with designers across every artistic spectrum and researchers who dive until they hit bedrock. Advocate, position, then get out of their way. Some traits run <span class="amber">dominant</span> — the next generation of them already files better bug reports than most of my clients.</p>
-    <div class="dossier rv">
-      <div class="d-row"><span class="k">designation</span><span class="v">Gary Waite</span></div>
-      <div class="d-row"><span class="k">coordinates</span><span class="v">Dallas–Fort Worth, TX <span class="dim">// big skies, bigger reinvention</span></span></div>
-      <div class="d-row"><span class="k">training_ground</span><span class="v">Texas Tech University</span></div>
-      <div class="d-row"><span class="k">primary_keys</span><span class="v">copy · campaigns · code <span class="dim">// biotech + ecommerce specialization</span></span></div>
-      <div class="d-row"><span class="k">secondary_ops</span><span class="v">talent management · web development <span class="dim">// one an inside joke</span></span></div>
-      <div class="d-row"><span class="k">classified</span><span class="v">USA Wrestling coach <span class="dim">// clearance: the_mat</span></span></div>
-      <div class="d-row"><span class="k">interests</span><span class="v">research · marketing canon · wrestling history · systems thinking</span></div>
-      <div class="d-row"><span class="k">artifacts</span><span class="v"><span class="redacted">██████████████</span> <span class="dim">// IP — domain portfolio, undisclosed</span></span></div>
-      <div class="d-row"><span class="k">source_code</span><span class="v"><a href="https://github.com/WaiteSolutions/garywaite" target="_blank" rel="noopener">github.com/WaiteSolutions/garywaite</a></span></div>
-      <div class="d-row"><span class="k">status</span><span class="v" style="color:var(--key)">● accepting new transmissions</span></div>
+<main>
+  <section id="signal">
+    <div class="wrap">
+      <p class="label"><b>01</b> / signal</p>
+      <h2>Where I learned to <span class="decode">listen.</span></h2>
+      <p class="story">I started in insurance loss consulting. When the accounts of what happened didn’t line up, I had to sort out what we knew, what we could verify, and what needed to happen next. I start a brief the same way.</p>
+      <p class="story">In biotech, that means tracing the claim back to the evidence and explaining why it matters to a clinician or buyer. In ecommerce, it means finding the question a shopper still has and answering it before they leave.</p>
+      <p class="story">I work with designers and researchers, and I can carry the copy through to a live page. <strong>The same person who wrote the sentence can see how it works on the screen.</strong></p>
+      <dl class="dossier">
+        <div><dt>coordinates</dt><dd>Dallas–Fort Worth, TX</dd></div>
+        <div><dt>education</dt><dd>Texas Tech University</dd></div>
+        <div><dt>work</dt><dd>Copy · campaigns · web development · talent management</dd></div>
+        <div><dt>off the clock</dt><dd>USA Wrestling coach</dd></div>
+        <div><dt>status</dt><dd class="status">● Open to project inquiries</dd></div>
+      </dl>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- TRANSMISSIONS / WORK -->
-<section id="transmissions">
-  <div class="wrap">
-    <div class="sec-head rv"><span class="sec-num">02</span><span class="sec-hash">dHJhbnNtaXNzaW9uc19sb2c=</span></div>
-    <h2 class="rv decode" data-text="Intercepted transmissions.">Intercepted <span class="enc">t̶r̵a̵n̶s̷m̵i̶s̵s̵i̷o̵n̷s̸.</span></h2>
-    <p class="story rv">Five operations, declassified on request. <span class="dim placeholder" style="color:var(--ink-faint)">[ payload slots — real campaign names, links, and numbers decrypt on arrival. No fabricated metrics pass through this channel. ]</span></p>
-
-    <div class="tx rv">
-      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
-        <span><span class="id">TX-001</span> &nbsp;the one that broke the algorithm</span>
-        <span><span class="cls">cls: viral</span> <span class="tx-toggle">+</span></span>
+  <section id="transmissions">
+    <div class="wrap">
+      <p class="label"><b>02</b> / work log</p>
+      <h2>Intercepted <span class="decode">transmissions.</span></h2>
+      <p class="story">Open a file for how I approach the work.</p>
+      <div class="log">
+        <details class="tx">
+          <summary><span class="id">TX-001</span><span class="tx-title">Give the hook a reason to travel</span><span class="cls">campaigns</span></summary>
+          <div class="tx-body">
+            <p>A setup gives the wrestler a clean shot. For a campaign, the setup is a hook the audience can repeat in their own words. Track what people did after seeing it, from sharing to taking the intended action.</p>
+            <span class="payload">[encrypted] Campaign, assets and results</span>
+          </div>
+        </details>
+        <details class="tx">
+          <summary><span class="id">TX-002</span><span class="tx-title">From mechanism to message</span><span class="cls">biotech</span></summary>
+          <div class="tx-body">
+            <p>A useful coaching cue distills a complicated move into one thing the wrestler can do. I apply that discipline to technical copy. Give clinicians or buyers the mechanism, its practical relevance, and the evidence behind the claim.</p>
+            <span class="payload">[encrypted] Client and approved samples</span>
+          </div>
+        </details>
+        <details class="tx">
+          <summary><span class="id">TX-003</span><span class="tx-title">The cart is a conversation</span><span class="cls">ecommerce</span></summary>
+          <div class="tx-body">
+            <p>Watch where the shopper stalls, the way you’d watch where a wrestler loses position. Use product pages, lifecycle emails, and paid social to answer the question that’s holding up the next step.</p>
+            <span class="payload">[encrypted] Brand, creative and performance</span>
+          </div>
+        </details>
+        <details class="tx">
+          <summary><span class="id">TX-004</span><span class="tx-title">From brief to browser</span><span class="cls">web development</span></summary>
+          <div class="tx-body">
+            <p>A move has to work at match speed. A message has to work on the page where someone reads it. I can write, build, and ship the page, then check whether the next step still makes sense on a phone.</p>
+            <span class="payload"><a href="https://github.com/WaiteSolutions/garywaite">View this site’s source</a> · [encrypted] Other shipped work</span>
+          </div>
+        </details>
+        <details class="tx">
+          <summary><span class="id">TX-005</span><span class="tx-title">Give good people a clear brief</span><span class="cls">talent management</span></summary>
+          <div class="tx-body">
+            <p>In the corner I give the wrestler one adjustment they can use. With designers and researchers, that means putting the audience and the decision in the brief, then giving feedback specific enough to make the next draft better.</p>
+            <span class="payload">[encrypted] Collaborators and project details</span>
+          </div>
+        </details>
       </div>
-      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — the hook, the audience, the spread. When you send the real share/view/conversion figures, they decrypt here verbatim.</div></div>
+      <p class="log-note"><b>Decrypt on arrival.</b> Names, samples, and results appear here once verified and cleared to share.</p>
     </div>
+  </section>
 
-    <div class="tx rv">
-      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
-        <span><span class="id">TX-002</span> &nbsp;mechanism → message</span>
-        <span><span class="cls">cls: biotech</span> <span class="tx-toggle">+</span></span>
-      </div>
-      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — dense science in, copy a clinician or buyer actually reads out. Compliance-aware. Jargon-free.</div></div>
+  <section id="mat" class="mat">
+    <div class="wrap">
+      <p class="label"><b>03</b> / the mat</p>
+      <h2>Notes from the <span class="decode">corner.</span></h2>
+      <p class="story">I coach youth wrestling in North Texas. I want kids to take care of the room, take ownership of their training, and want to come back next season. A few lessons travel well.</p>
+      <ul class="insights">
+        <li><h3>Position before panic</h3><p class="story">Control the center before your opponent forces a reaction. In a campaign, choose the audience and the problem you’ll own before the launch clock starts.</p></li>
+        <li><h3>Coach the one in front of you</h3><p class="story">One cue can click for one wrestler and confuse the next. Segment by what readers already know and what they still need to hear.</p></li>
+        <li><h3>Review the loss</h3><p class="story">Rewatch the exchange that cost you the match. In a funnel, find where people stopped and test one change at that step.</p></li>
+        <li><h3>Pressure with purpose</h3><p class="story">Pressure earns its keep when it creates an opening. Give a reader a concrete reason to act and make the next step easy to take.</p></li>
+        <li><h3>Give them a reason to return</h3><p class="story">I watch who comes back next season. In ecommerce, track the second purchase and give customers a useful reason to make it.</p></li>
+      </ul>
     </div>
+  </section>
 
-    <div class="tx rv">
-      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
-        <span><span class="id">TX-003</span> &nbsp;the cart is a conversation</span>
-        <span><span class="cls">cls: ecommerce</span> <span class="tx-toggle">+</span></span>
-      </div>
-      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — PDPs, lifecycle flows, paid social. What moved after the words changed.</div></div>
-    </div>
-
-    <div class="tx rv">
-      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
-        <span><span class="id">TX-004</span> &nbsp;built, not just briefed</span>
-        <span><span class="cls">cls: dev</span> <span class="tx-toggle">+</span></span>
-      </div>
-      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — sites and products shipped end-to-end. The copywriter who can also deploy is a different species.</div></div>
-    </div>
-
-    <div class="tx rv">
-      <div class="tx-head" onclick="this.parentElement.classList.toggle('open')">
-        <span><span class="id">TX-005</span> &nbsp;talent, advocated</span>
-        <span><span class="cls">cls: mgmt</span> <span class="tx-toggle">+</span></span>
-      </div>
-      <div class="tx-body"><div class="tx-inner"><span class="placeholder">[encrypted]</span> — the title is an inside joke; the practice isn't. Designers across the artistic spectrum, researchers who dive until they hit bedrock — advocated for, positioned to win, then left alone to be brilliant. Clear specs. Honest feedback. No politics.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- THE MAT — OUT OF SCOPE INSIGHTS -->
-<section id="mat" class="mat">
-  <div class="wrap">
-    <div class="mat-tag rv">out-of-scope intel // the_mat</div>
-    <div class="sec-head rv"><span class="sec-num">03</span><span class="sec-hash">dXNhX3dyZXN0bGluZ19jb2FjaA==</span></div>
-    <h2 class="rv decode" data-text="Everything I know about marketing, I learned coaching kids.">Everything I know about marketing, I learned <span class="enc">c̵o̷a̷c̷h̸i̶n̸g̵ ̵k̷i̸d̶s̵.</span></h2>
-    <p class="story rv">USA Wrestling coach. Weekends in gyms that smell like effort. The job is technically <em>out of scope</em> — it doesn't appear on invoices — but the ambition isn't small: every kid who steps onto my mat should leave it a good steward of the gym, their fitness, and themselves. It also happens to be the most honest leadership training money can't buy. Field notes, declassified:</p>
-
-    <div class="insight rv">
-      <span class="glyph">▸</span>
-      <div><h3>position_before_panic</h3><p>A kid who panics gets taken down. A kid who moves first, controls the center, and stays off their heels — dictates the match. <strong>Campaigns work identically.</strong> The brands that win aren't the loudest; they're the ones already in position when the moment shoots.</p></div>
-    </div>
-    <div class="insight rv">
-      <span class="glyph">▸</span>
-      <div><h3>coach_the_one_in_front_of_you</h3><p>Twelve kids, twelve operating systems. The drill that works for one confuses another. That's not a kid problem — it's a <strong>copy problem wearing a singlet</strong>. One message never fits a room. Segment or lose them.</p></div>
-    </div>
-    <div class="insight rv">
-      <span class="glyph">▸</span>
-      <div><h3>the_loss_review</h3><p>Nobody improves on the win. We watch the losses — frame by frame, no blame, just pattern. <strong>The best analytics meeting of my week happens in a folding chair</strong> after a kid loses 4–2 and asks what he missed.</p></div>
-    </div>
-    <div class="insight rv">
-      <span class="glyph">▸</span>
-      <div><h3>pressure_with_purpose</h3><p>Pressure without direction is just noise — and kids can smell noise. Same with audiences. <strong>Every push you put on a reader has to earn the right to move them somewhere</strong> they'll thank you for.</p></div>
-    </div>
-    <div class="insight rv">
-      <span class="glyph">▸</span>
-      <div><h3>get_up_one_more</h3><p>The only stat that matters in youth sports isn't on the scoreboard. It's whether they come back next season. Retention beats conquest. <strong>It always has. On the mat, in email, in life.</strong></p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CHANNEL / CONTACT -->
-<section id="channel">
-  <div class="wrap">
-    <div class="sec-head rv"><span class="sec-num">04</span><span class="sec-hash">b3Blbl9jaGFubmVs</span></div>
-    <h2 class="rv decode" data-text="Open channel.">Open <span class="enc">c̸h̸a̴n̵n̶e̷l̶.</span></h2>
-    <p class="story rv">Biotech copy, ecommerce campaigns, a build that needs shipping, talent that needs advocating — <strong>send the encrypted version. I'll find the plaintext.</strong></p>
-    <div class="term rv">
-      <div class="term-bar"><span></span><span></span><span></span></div>
-      <div class="term-body">
-        <div class="term-line"><span class="p">$</span> establish_handshake --target gary.waite</div>
-        <div class="term-line"><span class="out">→ email ......... </span><a href="mailto:gary@garywaite.net">gary@garywaite.net</a></div>
-        <div class="term-line"><span class="out">→ linkedin ...... </span><a href="https://www.linkedin.com/in/garycwaite/" target="_blank" rel="noopener">/in/garycwaite</a></div>
-        <div class="term-line"><span class="out">→ github ........ </span><a href="https://github.com/WaiteSolutions/garywaite" target="_blank" rel="noopener">WaiteSolutions/garywaite</a></div>
-        <div class="term-line"><span class="out">→ about.me ...... </span><a href="https://about.me/waitesolutions" target="_blank" rel="noopener">/waitesolutions</a></div>
-        <div class="term-line"><span class="p">$</span> response_time --expected</div>
-        <div class="term-line"><span class="out">→ 24–48h. Faster if the problem is interesting.</span></div>
-        <div class="term-line"><span class="p">$</span> <span class="blink"></span></div>
+  <section id="channel">
+    <div class="wrap">
+      <p class="label"><b>04</b> / contact</p>
+      <h2>Open <span class="decode">channel.</span></h2>
+      <p class="story">Send the audience, the action you want them to take, and where you’re stuck. A link, rough draft, or deadline helps if you have one.</p>
+      <p class="story"><strong>I’ll reply with whether I’m a fit and the first thing I’d look at.</strong></p>
+      <div class="term">
+        <p class="prompt"><b>$</b> open_channel --email</p>
+        <a class="button" href="mailto:gary@garywaite.net?subject=Project%20inquiry&amp;body=Audience%3A%0AAction%20you%20want%20them%20to%20take%3A%0AWhere%20you%27re%20stuck%3A%0ALink%20or%20deadline%20%28optional%29%3A">Email Gary <span aria-hidden="true">↗</span></a>
+        <dl class="contact-links">
+          <div><dt>Email</dt><dd><a href="mailto:gary@garywaite.net">gary@garywaite.net</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/garycwaite/">/in/garycwaite</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/WaiteSolutions">WaiteSolutions</a></dd></div>
+          <div><dt>About.me</dt><dd><a href="https://about.me/waitesolutions">/waitesolutions</a></dd></div>
+        </dl>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
   <div class="wrap foot-in">
-    <span>© <span id="yr"></span> g.waite :: north texas :: all transmissions logged</span>
-    <span><a href="#top">↑ return_to_surface</a></span>
+    <span>Gary Waite · North Texas</span>
+    <a href="#top">↑ Return to top</a>
   </div>
 </footer>
 
 <script>
-document.getElementById('yr').textContent=new Date().getFullYear();
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-/* decode-on-scroll for .rv */
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  if ('IntersectionObserver' in window) {
+    const glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%+=';
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const word = entry.target;
+        observer.unobserve(word);
+        if (motion.matches) continue;
 
-/* text-scramble decode for h1/h2 (respect reduced motion) */
-const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!reduce){
-  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&/\\@!?$*+=<>█▓▒░';
-  const scramble=(el)=>{
-    const target=el.dataset.text;
-    if(!target)return;
-    let frame=0;const dur=Math.min(34,target.length*1.6+18);
-    const encSpans=el.querySelectorAll('.enc');
-    const tick=()=>{
-      const progress=frame/dur;
-      const revealCount=Math.floor(progress*target.length*1.35);
-      // rebuild: decoded prefix + scrambled tail, preserving .enc spans only until fully decoded
-      let out='';let scrambled=false;
-      for(let i=0;i<target.length;i++){
-        if(i<revealCount){out+=target[i];}
-        else{out+= target[i]===' '?' ':chars[Math.floor(Math.random()*chars.length)];scrambled=true;}
+        const plaintext = word.textContent;
+        const start = performance.now();
+
+        function decode(now) {
+          if (motion.matches || now - start >= 320) {
+            delete word.dataset.scramble;
+            return;
+          }
+
+          const visible = Math.floor((now - start) / 320 * plaintext.length);
+          word.dataset.scramble = Array.from(plaintext, (char, index) => {
+            if (index < visible || !/[a-z]/i.test(char)) return char;
+            return glyphs[Math.floor(Math.random() * glyphs.length)];
+          }).join('');
+          setTimeout(() => requestAnimationFrame(decode), 45);
+        }
+
+        requestAnimationFrame(decode);
       }
-      if(scrambled){el.textContent=out;}
-      else{el.textContent=target;}
-      frame++;
-      if(frame<=dur)requestAnimationFrame(tick);
-    };
-    tick();
-  };
-  const sio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){scramble(e.target);sio.unobserve(e.target)}})},{threshold:.4});
-  document.querySelectorAll('.decode').forEach(el=>sio.observe(el));
-}
+    });
+
+    document.querySelectorAll('.decode').forEach((word) => observer.observe(word));
+  }
 </script>
 </body>
 </html>
